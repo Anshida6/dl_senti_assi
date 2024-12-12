@@ -8,7 +8,7 @@ import os
 
 # Load the trained mod
 # Define paths for model and tokenizer files
-model_path = 'C:\\Users\\anshi\\Desktop\\as\\sentiment_model.h5'  # Update with correct path to your model
+model_path = 'sentiment_model.h5'  # Update with correct path to your model
 
 # Check if the model file exists
 if not os.path.exists(model_path):
