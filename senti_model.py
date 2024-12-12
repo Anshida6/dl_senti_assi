@@ -90,24 +90,3 @@ history = model.fit(
 os.makedirs("models", exist_ok=True)
 model.save("/content/models/sentiment_model.h5")
 
-from tensorflow.keras.preprocessing.sequence import pad_sequences
-import numpy as np
-
-def predict_sentiment(sentence):
-    # Preprocess the sentence (e.g., tokenization, padding)
-    # For example, assuming you have a tokenizer and max_length:
-    tokenized_sentence = tokenizer.texts_to_sequences([sentence])  # Tokenizing the sentence
-    padded_sentence = pad_sequences(tokenized_sentence, maxlen=max_length)  # Padding the sentence
-
-    # Predict the sentiment class (0, 1, or 2)
-    prediction = model.predict(padded_sentence)
-    predicted_class = np.argmax(prediction, axis=1)  # Get the class with the highest probability
-
-    # Map the predicted class back to the original label
-    label_map = {0: 'Positive', 1: 'Neutral', 2: 'Negative'}
-    return label_map[predicted_class[0]]
-
-# Example prediction:
-sentence = "I love this product!"
-predicted_sentiment = predict_sentiment(sentence)
-print(f"Predicted sentiment: {predicted_sentiment}")
